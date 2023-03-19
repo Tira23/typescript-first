@@ -47,7 +47,7 @@ function App() {
             }
         }, 450);
         return () => clearInterval(interval);
-    }, [enemy, getLeftPosition, login, setEnemy]);
+    }, [enemy.length, getLeftPosition, login, setEnemy]);
 
     //===================================================
     // получаю данные о лидерах с сервера
@@ -58,7 +58,7 @@ function App() {
     //===================================================
 
     return (
-        <div className="container">
+        <div className="container" translate="no">
             {!login && <EnterWindow />}
             <LeftSide /> <BattleField />
         </div>
