@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {memo, useEffect} from "react";
 import { Enemy } from "./interface";
 interface IEnemyProps {
     props: Enemy;
@@ -6,7 +6,7 @@ interface IEnemyProps {
     clearImgEnemy: (enemy: Enemy) => void;
 }
 
-export const EnemyImg = ({
+export const EnemyImg = memo(({
     props,
     newEnemyPos,
     clearImgEnemy,
@@ -24,6 +24,7 @@ export const EnemyImg = ({
         };
     }, [enemyId, newEnemyPos, position]);
     // ==============================================
+
     // Удаляю врага за пределами экрана
     useEffect(() => {
         if (position.top > window.innerHeight) {
@@ -41,4 +42,4 @@ export const EnemyImg = ({
             <img className="enemy" src="../image/enemy.png" alt="laser" />
         </div>
     );
-};
+})

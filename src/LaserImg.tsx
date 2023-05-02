@@ -1,5 +1,5 @@
 import { Laser } from "./interface";
-import { useEffect } from "react";
+import {memo, useEffect} from "react";
 
 interface IPropsLaserImg {
     item: Laser;
@@ -7,7 +7,7 @@ interface IPropsLaserImg {
     clearImgLaser: (laser: Laser) => void;
     laserEnemy: (laser: Laser) => void;
 }
-export const LaserImg = ({
+export const LaserImg = memo(({
     item,
     newLaserPos,
     clearImgLaser,
@@ -30,9 +30,7 @@ export const LaserImg = ({
             clearInterval(interval);
         };
     }, [laserId, newLaserPos, position]);
-
     // Удаление лазера за пределами экрана
-
     useEffect(() => {
         // laserEnemy(item);
         if (position.top < 0) {
@@ -52,4 +50,5 @@ export const LaserImg = ({
             />
         </>
     );
-};
+}
+)
